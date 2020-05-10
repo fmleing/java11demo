@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 public class StringDemo {
 
     public static void main(String[] args) {
-        lines();
+        repeat();
     }
 
     public static void stripDemo(){
@@ -31,5 +31,13 @@ public class StringDemo {
         System.out.println(meet);
         System.out.println("==========");
         System.out.println(meet.lines().collect(Collectors.toList()));
+    }
+
+    public static void repeat(){
+        var repead = "repead";
+        var tenRepead = repead.repeat(10);
+        System.out.println(repead);
+        System.out.println("========");
+        System.out.println(tenRepead);
     }
 }
