@@ -1,9 +1,11 @@
 package com.feng.java11.demo;
 
+import java.util.stream.Collectors;
+
 public class StringDemo {
 
     public static void main(String[] args) {
-        isBlankDemo();
+        lines();
     }
 
     public static void stripDemo(){
@@ -18,5 +20,16 @@ public class StringDemo {
     public static void isBlankDemo(){
         String blank = "   ";
         System.out.println(blank.isBlank());
+    }
+
+    public static void lines(){
+        var lineSeparator = System.lineSeparator();
+        var author1 = "江户川柯南";
+        var author2 = "阿秋莎";
+        var author3 = "柯南道尔";
+        var meet = author1 +lineSeparator + author2+lineSeparator +  author3;
+        System.out.println(meet);
+        System.out.println("==========");
+        System.out.println(meet.lines().collect(Collectors.toList()));
     }
 }
