@@ -11,13 +11,11 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.concurrent.CompletableFuture;
 
 public class HttpClientDemo {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-
-
-
 
         HttpClient client = HttpClient.newBuilder()
                 // 协议版本，HTTP/1.1 还是 HTTP/2
@@ -46,9 +44,7 @@ public class HttpClientDemo {
                 client.send(request, HttpResponse.BodyHandlers.ofString());
 
         // 异步发送
-        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenApply(HttpResponse::body)
-                .thenAccept(System.out::println)
-                .join();
+        CompletableFuture<String> future = client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body);
     }
 }
