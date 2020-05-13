@@ -12,9 +12,7 @@ import java.nio.file.Paths;
 
 public class FileDemo {
     public static void main(String[] args) {
-        java11BeforeReadDemo();
-        System.out.println("======");
-        java11ReadDemo();
+        isSameFileDemo();
     }
 
     public static void java11BeforeWriteDemo(){
@@ -69,7 +67,12 @@ public class FileDemo {
 
     public static void isSameFileDemo(){
         Path path1 = Paths.get("/Users/Mengleifeng/Documents/学习文档/项目/开源项目/java11demo/src/main/resources/fileDemo.txt");
-        Path path2 = Paths.get("/Users/Mengleifeng/Documents/学习文档/项目/开源项目/java11demo/src/main/resources/fileDemo.txt");
-        Files file1 = Files.getFileAttributeView(path1);
+        Path path2 = Paths.get("/Users/Mengleifeng/Documents/学习文档/项目/开源项目/java11demo/src/main/../main/resources/fileDemo.txt");
+        System.out.println(path1.equals(path2));
+        try {
+            System.out.println(Files.isSameFile(path1, path2));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
